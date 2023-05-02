@@ -172,7 +172,7 @@ html(lang='en')
                     .col-lg-6
 
               
-                    form#contactForm(data-netlify='true' data-netlify-honeypot='bot-field')
+                    form#contactForm(method="post" name="contactForm" data-netlify='true' data-netlify-honeypot='bot-field' data-netlify-recaptcha="true")
 
                   
 
@@ -238,6 +238,7 @@ html(lang='en')
 
                             #submitErrorMessage.d-none
                                 .text-center.text-danger.mb-3 Error sending message!
+
 
                             // Submit Button
                             .d-grid
