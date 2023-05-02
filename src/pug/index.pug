@@ -172,7 +172,7 @@ html(lang='en')
                     .col-lg-6
 
               
-                    form#contactForm(netlify method="post")
+                    form(name="contactForm" data-netlify="true" method="POST")
 
                   
 
@@ -191,6 +191,7 @@ html(lang='en')
                             .form-floating.mb-3
                                 input#email.form-control(
                                     type='email',
+                                    name='email',
                                     placeholder='name@example.com',
                                     data-sb-validations='required,email'
                                 )
