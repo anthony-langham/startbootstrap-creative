@@ -172,87 +172,92 @@ html(lang='en')
                     .col-lg-6
 
               
-                    form(name="contactForm" data-netlify="true" method="POST" novalidate)
+         form(name="contactForm" data-netlify="true" method="POST")
 
-                  
+    // Name input
+    .form-floating.mb-3
+        input#name.form-control(
+            type='text',
+            name='name',
+            placeholder='Enter your name...',
+            required
+        )
+        label(for='name') Full name
+        .invalid-feedback
+            | Please enter your name.
 
-                            // Name input
-                            .form-floating.mb-3
-                                input#name.form-control(
-                                    type='text',
-                                    name='name',
-                                    placeholder='Enter your name...',
-                                    required
-                                )
-                                label(for='name') Full name
-                                .invalid-feedback
-                                    | A name is required.
+    // Email address input
+    .form-floating.mb-3
+        input#email.form-control(
+            type='email',
+            name='email',
+            placeholder='name@example.com',
+            required
+        )
+        label(for='email') Email address
+        .invalid-feedback
+            | Please enter a valid email address.
 
-                            // Email address input
-                            .form-floating.mb-3
-                                input#email.form-control(
-                                    type='email',
-                                    name='email',
-                                    placeholder='name@example.com',
-                                    required
-                                )
-                                label(for='email') Email address
-                                .invalid-feedback
-                                    | An email is required.
-                                
+    // Phone number input
+    .form-floating.mb-3
+        input#phone.form-control(
+            type='tel',
+            name='phone',
+            placeholder='(123) 456-7890',
+            required
+        )
+        label(for='phone') Phone number
+        .invalid-feedback
+            | Please enter your phone number.
 
-                            // Phone number input
-                            .form-floating.mb-3
-                                input#phone.form-control(
-                                    type='tel',
-                                    name='phone',
-                                    placeholder='(123) 456-7890',
-                                    required
-                                )
-                                label(for='phone') Phone number
-                                .invalid-feedback
-                                    | A phone number is required.
+    // Message input
+    .form-floating.mb-3
+        textarea#message.form-control(
+            type='text',
+            name='message',
+            placeholder='Enter your message here...',
+            style='height: 10rem;',
+            required
+        )
+        label(for='message') Message
+        .invalid-feedback
+            | Please enter your message.
 
-                            // Message input
-                            .form-floating.mb-3
-                                textarea#message.form-control(
-                                    type='text',
-                                    name='message',
-                                    placeholder='Enter your message here...',
-                                    style='height: 10rem;',
-                                    required
-                                )
-                                label(for='message') Message
-                                .invalid-feedback
-                                    | A message is required.
+    // Submit button
+    button.btn.btn-primary(type='submit' id='submitBtn') Send message
 
-                            // Submit success message
-                            
+    // Success message
+    .valid-feedback(style='display: none;')
+        | Thank you for your message! We will get back to you soon.
 
-                            #submitSuccessMessage.d-none
-                                .text-center.mb-3
-                                    .fw-bolder Form submission successful
-                                    | To activate this form, sign up at
-                                    br
-                                    a(href='https://startbootstrap.com/solution/contact-forms') https://startbootstrap.com/solution/contact-forms
+// JavaScript to handle form submission and validation
+script.
+    const form = document.querySelector('#contactForm');
+    const submitBtn = document.querySelector('#submitBtn');
+    const validFeedback = document.querySelector('.valid-feedback');
 
-                            // Submit error message
-                            
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-                            #submitErrorMessage.d-none
-                                .text-center.text-danger.mb-3 Error sending message!
+        // Check if all fields are valid
+        if (form.checkValidity()) {
+            // Disable submit button to prevent multiple submissions
+            submitBtn.disabled = true;
 
+            // Show success message and reset form
+            validFeedback.style.display = 'block';
+            form.reset();
 
-                            // Submit Button
-                            .d-grid
-                                button#submitButton.btn.btn-primary.btn-xl(type='submit') Submit
-
-        //-         .row.gx-4.gx-lg-5.justify-content-center
-        //-             .col-lg-4.text-center.mb-5.mb-lg-0
-        //-                 i.bi-phone.fs-2.mb-3.text-muted
-        //-                 div +1 (555) 123-4567
-
-
+            // Enable submit button after delay
+            setTimeout(() => {
+                submitBtn.disabled = false;
+            }, 5000);
+        } else {
+            // Show validation messages for invalid fields
+            form.classList.add('was-validated');
+        }
+    });
+           
     
 
         // Footer
