@@ -54,7 +54,7 @@ html(lang='en')
                         hr.divider
                     .col-lg-8.align-self-baseline
                         p.text-white-75.mb-5
-                            | Providing value to individuals and businesses since 2007. A proven track record of excellence and high value returns.
+                            | Providing professional services to individuals and businesses since 2007. A proven track record of excellence and high value returns.
                         a.btn.btn-primary.btn-xl(href='#about') Find Out More
 
         // About
@@ -172,7 +172,7 @@ html(lang='en')
                     .col-lg-6
 
               
-                    form(name="contactForm" data-netlify="true" method="POST")
+                    form(name="contactForm" data-netlify="true" method="POST" novalidate)
 
                   
 
@@ -182,10 +182,10 @@ html(lang='en')
                                     type='text',
                                     name='name',
                                     placeholder='Enter your name...',
-                                    data-sb-validations='required'
+                                    required
                                 )
                                 label(for='name') Full name
-                                .invalid-feedback(data-sb-feedback='name:required')
+                                .invalid-feedback
                                     | A name is required.
 
                             // Email address input
@@ -194,13 +194,12 @@ html(lang='en')
                                     type='email',
                                     name='email',
                                     placeholder='name@example.com',
-                                    data-sb-validations='required,email'
+                                    required
                                 )
                                 label(for='email') Email address
-                                .invalid-feedback(data-sb-feedback='email:required')
+                                .invalid-feedback
                                     | An email is required.
-                                .invalid-feedback(data-sb-feedback='email:email')
-                                    | Email is not valid.
+                                
 
                             // Phone number input
                             .form-floating.mb-3
@@ -208,10 +207,10 @@ html(lang='en')
                                     type='tel',
                                     name='phone',
                                     placeholder='(123) 456-7890',
-                                    data-sb-validations='required'
+                                    required
                                 )
                                 label(for='phone') Phone number
-                                .invalid-feedback(data-sb-feedback='phone:required')
+                                .invalid-feedback
                                     | A phone number is required.
 
                             // Message input
@@ -221,10 +220,10 @@ html(lang='en')
                                     name='message',
                                     placeholder='Enter your message here...',
                                     style='height: 10rem;',
-                                    data-sb-validations='required'
+                                    required
                                 )
                                 label(for='message') Message
-                                .invalid-feedback(data-sb-feedback='message:required')
+                                .invalid-feedback
                                     | A message is required.
 
                             // Submit success message
